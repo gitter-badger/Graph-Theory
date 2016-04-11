@@ -9,12 +9,20 @@ import java.util.Scanner;
 public class Graph {
     private HashMap<String, Vertex> vertices;
 
-    public Graph() {
+    private Graph() {
         this.vertices = new HashMap<>();
     }
 
-    public Graph(HashMap<String, Vertex> vertices) {
+    private Graph(HashMap<String, Vertex> vertices) {
         this.vertices = vertices;
+    }
+
+    public static Graph empty() {
+        return new Graph();
+    }
+
+    public static Graph create(HashMap<String, Vertex> vertices) {
+        return new Graph(vertices);
     }
 
     public HashMap<String, Vertex> getVertices() {

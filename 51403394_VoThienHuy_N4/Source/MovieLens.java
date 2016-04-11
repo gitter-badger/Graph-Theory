@@ -3,7 +3,8 @@ import java.io.FileNotFoundException;
 
 public class MovieLens {
     public static void main(String[] args) throws FileNotFoundException {
-        Graph g = new Graph();
+        Graph g = Graph.empty();
+
         g.readUsersFile("users.dat");
         g.readMoviesFile("movies.dat");
         g.readRatingsFile("ratings.dat");
