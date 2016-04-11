@@ -159,10 +159,10 @@ public class Graph {
         Vertex user = this.vertices.get("u"+String.valueOf(userID));
         Vertex movie = this.vertices.get("m"+String.valueOf(movieID));
         movie.getEdges().forEach(edge -> {
-            User tUser = ((User)edge.getAdj());
-            if (tUser.getUserID() != userID && tUser.getAge() == ((User)user).getAge()) {
+            User tempUser = ((User)edge.getAdj());
+            if (tempUser.getUserID() != userID && tempUser.getAge() == ((User)user).getAge()) {
                 if (edge.getWeight() >= movie.getWeightOf(user)) {
-                    result.add(tUser);
+                    result.add(tempUser);
                 }
             }
         });
@@ -175,13 +175,13 @@ public class Graph {
         Movie movie = ((Movie)this.vertices.get("m"+String.valueOf(movieID)));
         int stars = user.getWeightOf(movie);
         movie.getEdges().forEach(edge -> {
-            User tUser = ((User)edge.getAdj());
-            if (tUser.getWeightOf(movie) == stars && tUser.getGender().equalsIgnoreCase(user.getGender())) {
-                tUser.getEdges().forEach(edge1 -> {
-                    Movie tMovie = ((Movie)edge1.getAdj());
-                    if (tMovie.compareGenre(movie) && tMovie.getWeightOf(tUser) >= stars) {
-                        if (!result.contains(tMovie)) {
-                            result.add(tMovie);
+            User tempUser = ((User)edge.getAdj());
+            if (tempUser.getWeightOf(movie) == stars && tempUser.getGender().equalsIgnoreCase(user.getGender())) {
+                tempUser.getEdges().forEach(edge1 -> {
+                    Movie tempMovie = ((Movie)edge1.getAdj());
+                    if (tempMovie.compareGenre(movie) && tempMovie.getWeightOf(tempUser) >= stars) {
+                        if (!result.contains(tempMovie)) {
+                            result.add(tempMovie);
                         }
                     }
                 });
@@ -198,16 +198,16 @@ public class Graph {
         List<Vertex> result = new ArrayList<>();
         User user = ((User)this.vertices.get("u"+String.valueOf(userID)));
         Movie movie = ((Movie)this.vertices.get("m"+String.valueOf(movieID)));
-        int uOccupation = user.getOccupation();
+        int userOccupation = user.getOccupation();
         int stars = user.getWeightOf(movie);
         movie.getEdges().forEach(edge -> {
-            User tUser = ((User)edge.getAdj());
-            if (tUser.getWeightOf(movie) == stars && tUser.getOccupation() == uOccupation) {
-                tUser.getEdges().forEach(edge1 -> {
-                    Movie tMovie = ((Movie)edge1.getAdj());
-                    if (tMovie.compareGenre(movie) && tMovie.getWeightOf(tUser) >= stars) {
-                        if (!result.contains(tMovie)) {
-                            result.add(tMovie);
+            User tempUser = ((User)edge.getAdj());
+            if (tempUser.getWeightOf(movie) == stars && tempUser.getOccupation() == userOccupation) {
+                tempUser.getEdges().forEach(edge1 -> {
+                    Movie tempMovie = ((Movie)edge1.getAdj());
+                    if (tempMovie.compareGenre(movie) && tempMovie.getWeightOf(tempUser) >= stars) {
+                        if (!result.contains(tempMovie)) {
+                            result.add(tempMovie);
                         }
                     }
                 });
@@ -224,13 +224,13 @@ public class Graph {
         List<Vertex> result = new ArrayList<>();
         Movie movie = ((Movie)this.vertices.get("m"+String.valueOf(movieID)));
         movie.getEdges().forEach(edge -> {
-            User tUser = ((User)edge.getAdj());
-            if (tUser.getUserID() != userID && tUser.getWeightOf(movie) < 3) {
-                tUser.getEdges().forEach(edge1 -> {
-                    Movie tMovie = ((Movie)edge1.getAdj());
-                    if (tMovie.getWeightOf(tUser) >= 3) {
-                        if (!result.contains(tMovie)) {
-                            result.add(tMovie);
+            User tempUser = ((User)edge.getAdj());
+            if (tempUser.getUserID() != userID && tempUser.getWeightOf(movie) < 3) {
+                tempUser.getEdges().forEach(edge1 -> {
+                    Movie tempMovie = ((Movie)edge1.getAdj());
+                    if (tempMovie.getWeightOf(tempUser) >= 3) {
+                        if (!result.contains(tempMovie)) {
+                            result.add(tempMovie);
                         }
                     }
                 });
