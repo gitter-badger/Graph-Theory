@@ -21,7 +21,7 @@ public class Vertex {
 
     public boolean isGreater(int stars, int movieID) {
         for (Edge edge : this.getEdges()) {
-            if (edge.getWeight() > stars &&((Movie)edge.getAdj()).getMovieID() != movieID) {
+            if (edge.getWeight() > stars && ((Movie)edge.getAdj()).getMovieID() != movieID) {
                 return true;
             }
         }
